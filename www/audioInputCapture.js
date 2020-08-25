@@ -21,7 +21,7 @@ var exec = require('cordova/exec');
 
 var audioinput = {};
 
-var hasTypedArrays = 'Int16Array' in window && 'Float32Array' in window;
+//var hasTypedArrays = 'Int16Array' in window && 'Float32Array' in window;
 
 // Audio formats
 audioinput.FORMAT = {
@@ -369,7 +369,7 @@ audioinput._audioInputDebugEvent = function (debugMessage) {
  * Returns a typed array, normalizing if needed
  * @param {number[]} pcmData - Array of short integers which came from the plugin
  */
-function normalizeToTyped(pcmData) {
+/*function normalizeToTyped(pcmData) {
     if (audioinput._cfg.normalize) {
         var out = Float32Array.from(pcmData, function(i) {
             return parseFloat(i) / audioinput._cfg.normalizationFactor;
@@ -382,7 +382,7 @@ function normalizeToTyped(pcmData) {
     }
 
     return Int16Array.from(pcmData);
-}
+}*/
 
 /**
  * Returns a standard javascript array, normalizing if needed
@@ -416,7 +416,7 @@ function normalizeNoTyped (pcmData) {
  * 
  * @returns {Int16Array|Float32Array|Array} 
  */
-audioinput._normalizeAudio = hasTypedArrays ? normalizeToTyped : normalizeNoTyped;
+audioinput._normalizeAudio =/* hasTypedArrays ? normalizeToTyped : */normalizeNoTyped;
 
 
 /**
